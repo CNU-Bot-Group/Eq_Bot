@@ -1,7 +1,3 @@
-"""
-This module defines a base class for canonicalization.
-"""
-
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import torch
