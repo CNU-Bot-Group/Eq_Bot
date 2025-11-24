@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eq.Bot: A Universal Equivariant Framework for Robotic Manipulation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+        }
+
+        .header {
+            background: #ffffff;
+            color: #1a202c;
+            padding: 100px 20px 80px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #1a202c;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+            color: #475569;
+            text-align: justify;
+        }
+
+        .authors {
+            margin: 25px 0;
+            font-size: 1.15em;
+            font-weight: 400;
+            color: #1a202c;
+        }
+
+        .authors span {
+            margin: 0 12px;
+            display: inline-block;
+        }
+
+        .affiliation {
+            margin-top: 15px;
+            font-size: 1.05em;
+            font-weight: 300;
+            color: #64748b;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            background: #1a202c;
+            border: 2px solid #1a202c;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #1a202c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 90px 20px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #1a202c;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .section-intro {
+            text-align: justify;
+            font-size: 1.15em;
+            color: #64748b;
+            max-width: 800px;
+            margin: -20px auto -20px;
+        }
+
+        .abstract-content {
+            max-width: 850px;
+            margin: 0 auto;
+            font-size: 1.12em;
+            line-height: 1.9;
+            color: #475569;
+            text-align: justify;
+        }
+
+        .abstract-content p {
+            margin-bottom: 20px;
+        }
+
+        .abstract-content strong {
+            color: #1a202c;
+            font-weight: 600;
+        }
+        
+        .figure-block {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .figure-block img {
+            max-width: 880px;
+            border-radius: 12px;
+        }
+
+        .figure-caption {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #64748b;
+            max-width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: justify;
+        }
+        
+        .highlight-box {
+            background: #f7f9fc;
+            border: 1px solid #e5e7eb;
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 50px;
+        }
+        
+        .highlight-box h3 {
+            font-size: 1.8em;
+            color: #1a202c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+        }
+        
+        .feature-card .icon {
+            font-size: 2.5em;
+            margin: -20px auto 0;
+        }
+
+        .feature-card h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #1a202c;
+        }
+
+        .feature-card p {
+            color: #475569;
+            font-size: 0.9em;
+            text-align: justify;
+        }
+
+        .citation {
+            background: #1a202c;
+            color: white;
+            padding: 80px 20px;
+        }
+
+        .citation h2 {
+            color: white;
+        }
+
+        .citation-box {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #0f172a;
+            padding: 30px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            border: 1px solid #334155;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <h1>Eq.Bot: Enhance Robotic Manipulation Learning via Group Equivariant Canonicalization</h1>
+        <p class="subtitle">
+            A model-agnostic framework that endows existing manipulation systems with spatial equivariance without architectural modifications. Inspired by group theory, Eq.Bot canonicalizes observations to enhance geometric consistency, significantly boosting performance for both CNN and Transformer-based policies.
+        </p>
+        <div class="authors">
+            <span>Jian Deng<sup>1</sup></span>
+            <span>Yuandong Wang<sup>1†</sup></span>
+            <span>Yangfu Zhu<sup>1</sup></span>
+            <span>Tao Feng<sup>2</sup></span>
+            <span>Tianyu Wo<sup>3</sup></span>
+            <span>Zhenzhou Shao<sup>1†</sup></span>
+        </div>
+        <div class="affiliation">
+            <sup>1</sup>Beijing Key Laboratory of Light Industrial Robot and Safety Verification, Capital Normal University<br>
+            <sup>2</sup>Department of Computer Science and Technology, Tsinghua University<br>
+            <sup>3</sup>School of Software, Beihang University<br>
+            <sup>†</sup>Corresponding authors: wangyd@cnu.edu.cn, zshao@cnu.edu.cn
+        </div>
+        <div class="buttons">
+            <a href="https://arxiv.org/abs/2511.15194" class="btn">📄 Paper</a>
+            <a href="https://github.com/CNU-Bot-Group/Eq_Bot/tree/main" class="btn">💻 Code</a>
+        </div>
+    </div>
+</header>
+
+<section id="visual-intro">
+    <div class="container">
+        <div class="figure-block">
+            <img src="img\visual_intr.png" alt="Performance comparison of Eq.Bot with baseline models">
+            <p class="figure-caption">
+                <b>Performance comparison on Robotic Manipulation Benchmarks.</b> Our model-agnostic framework significantly boosts the performance of both the CNN-based CLIPort (left) and the Transformer-based OpenVLA-OFT (right). On the pack-unseen-box task (demo = 100), Eq.Bot improves CLIPort's success rate from 62.4% to 93.6%. For OpenVLA-OFT, our method consistently enhances performance on the LIBERO benchmarks.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="abstract" style="background: #f8f9fa;">
+    <div class="container">
+        <h2>Abstract</h2>
+        <div class="abstract-content">
+            <p>
+                Robotic manipulation systems are increasingly deployed across diverse domains. Yet existing multi-modal learning frameworks lack inherent guarantees of geometric consistency, struggling to handle spatial transformations such as rotations and translations. While recent works attempt to introduce equivariance through bespoke architectural modifications, these methods suffer from high implementation complexity, computational cost, and poor portability. 
+            </p>
+            <p>
+                Inspired by human cognitive processes in spatial reasoning, we propose <strong>Eq.Bot</strong>, a universal canonicalization framework grounded in SE(2) group <strong>eq</strong>uivariant theory for ro<strong>bot</strong>ic manipulation learning. Our framework transforms observations into a canonical space, applies an existing policy, and maps the resulting actions back to the original space. As a model-agnostic solution, <strong>Eq.Bot</strong> aims to endow models with spatial equivariance without requiring architectural modifications.
+            </p>
+            <p>
+                Extensive experiments demonstrate the superiority of <strong>Eq.Bot</strong> under both CNN-based (e.g., CLIPort) and Transformer-based (e.g., OpenVLA-OFT) architectures over existing methods on various robotic manipulation tasks, where the most significant improvement can reach <strong>50.0%</strong>.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="overview">
+    <div class="container">
+        <h2>How Eq.Bot Works</h2>
+        <p class="section-intro">
+            Eq.Bot is a model-agnostic "wrapper" that enhances existing policies with spatial equivariance. It follows a three-stage process inspired by group theory and human cognition, ensuring that manipulation logic remains consistent even when objects are rotated.
+        </p>
+        <div class="figure-block">
+            <img src="img\overview.png" alt="Overview of the Eq.Bot framework">
+            <p class="figure-caption">
+                <b>Overview of the proposed Eq.Bot framework.</b> Grounded in equivariant theory, Eq.Bot introduces a canonicalization process that transforms input observations into standardized canonical orientations. These canonicalized observations are then fed into an <b>unmodified base policy</b> (e.g., CLIPort or OpenVLA) to generate actions. Finally, the resulting actions are mapped back to the original space through inverse transformation for execution.
+            </p>
+        </div>
+        
+        <div class="highlight-box">
+            <h3>Key Features</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">🔌</div>
+                    <h4>Universal & Model-Agnostic</h4>
+                    <p>Integrates with various architectures (e.g., CNNs, Transformers) without any internal modifications. A "plug-and-play" solution for equivariance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📐</div>
+                    <h4>Theory-Grounded</h4>
+                    <p>Built on the solid mathematical founda-tion of SE(2) group equivariant theory, providing a rigorous guarantee for han-dling geometric transformations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🚀</div>
+                    <h4>Significant Performance Boost</h4>
+                    <p>Delivers substantial improvements in success rates across a wide range of manipulation tasks, with up to a 50% increase in challenging scenarios.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="citation" class="citation">
+    <div class="container">
+        <h2>Citation</h2>
+        <p class="section-intro" style="color: #cbd5e1;">
+            If you find our work useful, please consider citing our paper.
+        </p>
+        <div class="citation-box">
+            @article{deng2025eqbot,<br>
+            &nbsp;&nbsp;title={Eq.Bot: Enhance Robotic Manipulation Learning via Group Equivariant Canonicalization},<br>
+            &nbsp;&nbsp;author={Deng, Jian and Wang, Yuandong and Zhu, Yangfu and Feng, Tao and Wo, Tianyu and Shao, Zhenzhou},<br>
+            &nbsp;&nbsp;journal={arXiv preprint arXiv:2511.15194},<br>
+            &nbsp;&nbsp;year={2025}<br>
+            }
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
