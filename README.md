@@ -1,4 +1,4 @@
-# Eq.Bot: A Universal SE(2) Equivariant Framework for Robotic Manipulation
+# Eq.Bot: Enhance Robotic Manipulation Learning via Group Equivariant Canonicalizationn
 
 Eq.Bot is a model-agnostic solution that can be integrated with existing multi-modal architectures (both CNN-based and Transformer-based) without requiring architectural modifications. It works by transforming observations into a canonical space, applying an existing policy, and mapping the resulting actions back to the original space.
 
@@ -35,3 +35,4 @@ This code provides the core building blocks for the Eq.Bot framework. To integra
 3. Train or finetune the canonicalization network alongside the base policy.
 
 For detailed experimental setup and results, please refer to our main paper.
+
